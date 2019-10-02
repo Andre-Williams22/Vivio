@@ -1,0 +1,10 @@
+<!-- templates/playlists_index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Movies</h1>
+    {% for movie in movies %}
+        <h2>{{ movie.title }}</h2>
+        <small>{{ movie.description }}</small>
+    {% endfor %}
+{% endblock %}

@@ -4,26 +4,31 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.Movie
 movies = db.movies
-'''
-movies = [
-    { 'title': 'Cat Videos', 'description': 'Cats acting weird' },
-    { 'title': '80\'s Music', 'description': 'Don\'t stop believing!' }
-]
-'''
+
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def index():
-    """return homepage"""
-    return render_template('home.html')
-
-
-@app.route('/movies')
 def movies_index():
     """Show all movies."""
-    return render_template('movies_index.html', movies=movies)
+    return render_template('movies_index.html', movies=movies.find())
+
+@app.route('/movies/new')
+def movie_new():
+    '''create a new movie '''
+    return render_template('movies_new.html')
+
+@app.route('/movies', methods=['POST'])
+def movies_submit():
+    """Submit a new movie"""
+    movie = {
+        'title': request.form.get('title'),
+        'description': request.form.get('description'),
+        'videos': request.form.get('videos').split()
+    }
+    movies.insert_one(movie)
+    return redirect(url_for('movies_index'))
 
 
 

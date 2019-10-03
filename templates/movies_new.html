@@ -4,7 +4,7 @@
 {% block content %}
 <form method='POST' action='/movies'>
     <fieldset>
-    <legend>New Movies</legend>
+    <legend>New Movie</legend>
     <!-- TITLE -->
     <p>
         <label for='title'>Title</label><br>
@@ -17,16 +17,16 @@
     </p>
     <!-- VIDEO LINKS -->
     <p>
-        <label for='playlist-videos'>Videos</label><br>
+        <label for='movie-videos'>Videos</label><br>
         <p>Add videos in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
-        <textarea id='playlist-videos' name='videos' rows='10'></textarea>
+        <textarea id='movie-videos' name='videos' rows='10'></textarea>
     </p>
     </fieldset>
 
 
     <!-- BUTTON -->
     <p>
-        <button type='submit'>Save Playlist</button>
+        <button type='submit'>Save Movie</button>
     </p>
 </form>
 {% endblock %}

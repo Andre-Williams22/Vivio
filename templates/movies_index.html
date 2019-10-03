@@ -3,6 +3,9 @@
 
 {% block content %}
     <h1>Movies</h1>
+    <a href='/movies/new'>Add a new Movie</a>
+
+
     {% for movie in movies %}
         <h2>{{ movie.title }}</h2>
         <small>{{ movie.description }}</small>

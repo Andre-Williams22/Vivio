@@ -1,32 +1,8 @@
-<!-- templates/movies_new.html -->
+<!-- templates/playlists_new.html -->
 {% extends 'base.html' %}
 
 {% block content %}
 <form method='POST' action='/movies'>
-    <fieldset>
-    <legend>New Movie</legend>
-    <!-- TITLE -->
-    <p>
-        <label for='title'>Title</label><br>
-        <input type='text' name='title' />
-    </p>
-    <!-- Description -->
-    <p>
-        <label for='description'>Description</label><br>
-        <input id='description' type='text' name='description' />
-    </p>
-    <!-- VIDEO LINKS -->
-    <p>
-        <label for='movie-videos'>Videos</label><br>
-        <p>Add videos in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
-        <textarea id='movie-videos' name='videos' rows='10'></textarea>
-    </p>
-    </fieldset>
-
-
-    <!-- BUTTON -->
-    <p>
-        <button type='submit'>Save Movie</button>
-    </p>
+    {% include 'partials/movies_form.html' %}
 </form>
 {% endblock %}

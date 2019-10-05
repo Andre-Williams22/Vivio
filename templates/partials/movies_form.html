@@ -1,0 +1,38 @@
+<!-- templates/partials/playlists_form.html -->
+
+<fieldset>
+<legend>Edit Playlist</legend>
+<!-- TITLE -->
+  <div class='form-group'>
+        <label for='movie-title'>Title</label><br>
+        <input class='form-control' id='movie-title' type='text' name='title' value='{{ movie.title }}'/>
+  </div>
+<!-- DESCRIPTION -->
+
+<div class='form-group'>
+  <label for='description'>Description</label><br>
+  <input id='description' type='text' name='description' value='{{ movie.description }}' />
+</div>
+
+
+<!-- Link -->
+
+<div class='form-group'>
+  <label for='link'>Link to Purchase Movie</label><br>
+  <input id='link' type='text' name='link' value='{{ movie.link }}' />
+</div>
+
+
+
+<!-- VIDEO LINKS -->
+<div class='form-group'>
+  <label for='movie-videos'>Videos</label><br>
+  <p>Add preview movies in the form of 'https://youtube.com/embed/KEY'. Add one movie preview.</p>
+  <textarea id='movie-videos' name='videos' rows='10'>{{ "\n".join(movie.videos) }}</textarea>
+</div>
+</fieldset>
+
+<!-- BUTTON -->
+<p>
+    <button type='submit'>Save Movie</button>
+</p>

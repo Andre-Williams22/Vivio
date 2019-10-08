@@ -25,13 +25,26 @@
         <p class='text-muted'>Add videos in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
         <textarea class='form-control' id='movie-videos' name='videos' rows='10' />{{ "\n".join(movie.videos) }}</textarea>
     </div>
+      <div>
+    <h2>Buy for $5.00</h2>
+    <form action="/charge" method="post">
+      <script
+        src="https://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-key="{{ key }}"
+        data-description="A Flask Charge"
+        data-amount="500"
+        data-locale="auto">
+      </script>
+    </form>
+  </div>
 </fieldset>
 
+<!-- BUTTON -->
+
+    <div class='form-group'>
+        <label for=''>Link to Purchase Movie</label><br>
+        <input id='link' type='text' name='link' value='{{ movie.link }}' />
+    </div>
 
 
-
-<!-- BUTTON 
-<p>
-    <button type='submit'>Save Movie</button>
-</p>
--->

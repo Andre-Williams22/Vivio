@@ -21,8 +21,8 @@ secret_key = os.getenv("secret_key")
 publishable_key = os.getenv("publishable_key")
 '''
 stripe_keys = {
-  'secret_key': 'sk_test_S1UKtrSKbTVMv7YzQpch6RBc007RPTTUgW',#sk_live_aMiS746an3HhqLXAnoDAtKPX00dsZWqoow',
-  'publishable_key': 'pk_test_LqQaKSR0V30253rAvgA8Bcd300FMsyQ5d2'#pk_live_UKuJoE9h2gemYb8vuvMHbZzh00BKvVCOu7'
+  'secret_key': 'sk_test_S1UKtrSKbTVMv7YzQpch6RBc007RPTTUgW',
+  'publishable_key': 'pk_test_LqQaKSR0V30253rAvgA8Bcd300FMsyQ5d2'
 }
 
 stripe.api_key = stripe_keys['secret_key']
@@ -115,7 +115,7 @@ def comments_delete(comment_id):
 def charge():
 
     # amount in cents
-    amount = 100
+    amount = 1000
 
     customer = stripe.Customer.create(
         email='sample@customer.com',

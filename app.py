@@ -8,6 +8,7 @@ import stripe
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Movie')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
+
 # Creates MongoDB  Collection
 movies = db.movies
 comments = db.comments
@@ -15,8 +16,8 @@ comments = db.comments
 app = Flask(__name__)
 #stripe.setPublishableKey('pk_live_UKuJoE9h2gemYb8vuvMHbZzh00BKvVCOu7')
 stripe_keys = {
-  'secret_key': os.environ['STRIPE_SECRET_KEY'],
-  'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
+  'secret_key': 'sk_live_aMiS746an3HhqLXAnoDAtKPX00dsZWqoow',
+  'publishable_key':'pk_live_UKuJoE9h2gemYb8vuvMHbZzh00BKvVCOu7'
 }
 
 stripe.api_key = stripe_keys['secret_key']

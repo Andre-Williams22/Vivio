@@ -4,6 +4,7 @@
         <p class='card-text'>{{ comment.content }}</p>
         <!-- Delete link -->
         <p><form method='POST' action='/movies/comments/{{ comment._id }}'>
+            <input type='hidden' name='_method' value='DELETE'/>
             <button class='btn btn-link' type='submit'>Delete</button>
         </form></p>
     </div>

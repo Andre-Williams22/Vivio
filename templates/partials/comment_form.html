@@ -1,7 +1,6 @@
 <!-- templates/partials/comment_form.html -->
 
-<form>
-    <form action='/movies/comments' method='POST'>
+<form action='/movies/comments' method='POST'>
     <input type='hidden' value='{{ movie._id }}' name='movie_id'/>
 
     <fieldset>
@@ -41,6 +40,5 @@
     <!-- BUTTON -->
     <div class='form-group'>
         <button class='btn btn-primary' type='submit'>Save Comment</button>
-
     </div>
 </form>

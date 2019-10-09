@@ -1,16 +1,38 @@
-<!-- templates/movies_index.html -->
+<!-- templates/playlists_index.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Movies</h1>
-
-    <div class='row'>
+<h1>MOVIES</h1>
+<div class="row">
     {% for movie in movies %}
-        <div class='col-md-3'>
-            <h2><a href='/movies/{{ movie._id }}'>{{ movie.title }}</a></h2>
-            <small>{{ movie.description }}</small><br><br>
-            
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title"><a href="/movies/{{ movie._id }}">{{ movie.title }}</a></h2>
+                <p class="card-text">Rating: {{ movie.ratings }}</p>
+
+                <p class="card-text">Description: {{ movie.description }}</p>
+                <a href="/movies/{{ movie._id }}" class="btn btn-primary">Song Info</a>
+                        <div>
+                        <br>
+                    
+                        <form action="/charge" method="post">
+                        <script
+                            src="https://checkout.stripe.com/checkout.js"
+                            class="stripe-button"
+                            data-key="{{ key }}"
+                            data-description="A Flask Charge"
+                            data-amount="100"
+                            data-locale="auto">
+                        </script>
+                        </form>
+                    </div>
+            </div>
         </div>
-    {% endfor %}
+
     </div>
+    {% endfor %}
+
+</div>
+
 {% endblock %}

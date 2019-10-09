@@ -1,10 +1,21 @@
-<!-- templates/partials/playlists_form.html -->
 <fieldset>
     <legend>Edit Movie</legend>
     <!-- TITLE -->
     <div class='form-group'>
         <label for='movie-title'>Title</label><br>
-        <input class='form-control' id='movie-title' type='text' name='title' value='{{ movie.title }}'/>
+        <input class='form-control' id='movie-title' type='text' name='title' value='{{ movie.title }}' />
+    </div>
+
+    <!-- RATINGS -->
+    <div class="form-group">
+        <label>How would you rate it?</label>
+        <select name="ratings" id="ratings-dropdown">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
     </div>
 
     <!-- DESCRIPTION -->
@@ -13,17 +24,23 @@
         <input class='form-control' id='description' type='text' name='description' value='{{ movie.description }}' />
     </div>
 
-    <!-- Link -->
+    <!-- Videos  -->
     <div class='form-group'>
-        <label for='link'>Link to Purchase Movie</label><br>
-        <input id='link' type='text' name='link' value='{{ movie.link }}' />
-    </div>
-
-    <!-- VIDEO LINKS -->
-    <div class='form-group'>
-        <label for='movie-videos'>Videos</label><br/>
+        <label for='movie-videos'>Videos</label><br />
         <p class='text-muted'>Add videos in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
         <textarea class='form-control' id='movie-videos' name='videos' rows='10' />{{ "\n".join(movie.videos) }}</textarea>
+    </div>
+</fieldset>
+
+<!-- BUTTON -->
+<p>
+    <button type="menu"><a href="/">Cancel</a></button>
+</p>
+
+<!--
+    <div class='form-group'>
+        <label for=''>Link to Purchase Movie</label><br>
+        <input id='link' type='text' name='link' value='{{ movie.link }}' />
     </div>
       <div>
     <h2>Buy for $5.00</h2>
@@ -38,13 +55,4 @@
       </script>
     </form>
   </div>
-</fieldset>
-
-<!-- BUTTON -->
-
-    <div class='form-group'>
-        <label for=''>Link to Purchase Movie</label><br>
-        <input id='link' type='text' name='link' value='{{ movie.link }}' />
-    </div>
-
-
+-->

@@ -5,7 +5,7 @@ from datetime import datetime
 import os
 import stripe
 
-host = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/Movie')
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Movie')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 # Creates MongoDB  Collection
@@ -128,4 +128,4 @@ def charge():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=os.getenv('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))

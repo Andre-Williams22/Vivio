@@ -7,6 +7,8 @@
     <meta charset='utf-8'>
     <title>Movies</title>
     <!-- Latest compiled and minified CSS -->
+    <link rel='stylesheet' href='{{ url_for('static', filename='css/style.css')}}'>
+
     <link rel='stylesheet' href='https://bootswatch.com/4/superhero/bootstrap.min.css'>
 </head>
 
@@ -24,59 +26,22 @@
 <br>
 <br>
     <!-- Footer -->
-<div class="container text-center">
+<div class="container-fluid text-center">
     <hr />
   <div class="row">
-    <div class="col-lg-12">
-      <div class="col-md-3">
-        <div class="nav nav-pills nav-stacked"><br>
-          <p><a href="https://www.linkedin.com/in/andrewilliams22/">About us</a></p>
+      <div class="col-md-12">
+        <div class="footer-content">
+            <a href="https://www.linkedin.com/in/andrewilliams22/">About us</a>
+            <a href="https://medium.com/me/stories/public">Blog</a> 
+            <a href="https://trailers.apple.com/">Sources</a>
+            <a href="https://playlister-aw.herokuapp.com/">Other Products</a>
+            <a href="https://en.wikipedia.org/wiki/Web_analytics">Web analytics</a></p>  
+            <a href="https://piktochart.com/blog/startup-pitch-decks-what-you-can-learn/">Presentations</a>     
+            <a href="https://stripe.com/docs/api">Developer API Documentation</a>
+            <h1 class="copyright">&copy 2019 Vivio</h1>
         </div>
-        </div>
-        <div class="col-md-3">
-        <div class="nav nav-pills nav-stacked"><br>
-          <p><a href="https://medium.com/me/stories/public">Blog</a></p>
-        </div>
-        </div>
-        <div class="col-md-3">
-        <div class="nav nav-pills nav-stacked"><br>
-          <p><a href="https://trailers.apple.com/">Sources</a></p>
-        </div>
-       </div>
-      <div class="col-md-3">
-        <div class="nav nav-pills nav-stacked"style="display:flex; justify-content: space-between"> 
-          <p><a href="https://playlister-aw.herokuapp.com/">Other Products</a></p>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="nav nav-pills nav-stacked"style="display:flex; justify-content: space-between">
-          <p><a href="https://en.wikipedia.org/wiki/Web_analytics">Web analytics</a></p>        
-        </div>
-      </div>
-            <div class="col-md-3">
-        <div class="nav nav-pills nav-stacked"style="display:flex; justify-content: space-between">
-          <p><a href="https://piktochart.com/blog/startup-pitch-decks-what-you-can-learn/">Presentations</a></p>       
-        </div>
-      </div>
-       
-      <div class="col-md-3">
-        <div class="nav nav-pills nav-stacked"style="display:flex; justify-content: space-between">
-          <p><a href="https://stripe.com/docs/api">Developer API Documentation</a></p>
-        </div>
-      </div>  
-    </div>
   </div>
-  <hr>
-    <div class="row">
-        <div class="col-lg-12">
-            <ul class="nav nav-pills nav-justified">
-                <li><a href="/">© 2019 Company Name.</a></li>
-            </ul>
-        </div>
-    </div>
 </div>
-    </footer>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>

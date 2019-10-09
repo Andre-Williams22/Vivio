@@ -4,6 +4,8 @@ from bson.objectid import ObjectId
 from datetime import datetime
 import os
 import stripe
+from dotenv import load_dotenv
+load_dotenv()
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Movie')
 client = MongoClient(host=f'{host}?retryWrites=false')
@@ -14,19 +16,21 @@ movies = db.movies
 comments = db.comments
 
 app = Flask(__name__)
-#stripe.setPublishableKey('pk_live_UKuJoE9h2gemYb8vuvMHbZzh00BKvVCOu7')
+'''
+secret_key = os.getenv("secret_key")
+publishable_key = os.getenv("publishable_key")
+'''
 stripe_keys = {
-  'secret_key': 'sk_live_aMiS746an3HhqLXAnoDAtKPX00dsZWqoow',
-  'publishable_key':'pk_live_UKuJoE9h2gemYb8vuvMHbZzh00BKvVCOu7'
+  'secret_key': 'sk_test_S1UKtrSKbTVMv7YzQpch6RBc007RPTTUgW',#sk_live_aMiS746an3HhqLXAnoDAtKPX00dsZWqoow',
+  'publishable_key': 'pk_test_LqQaKSR0V30253rAvgA8Bcd300FMsyQ5d2'#pk_live_UKuJoE9h2gemYb8vuvMHbZzh00BKvVCOu7'
 }
 
 stripe.api_key = stripe_keys['secret_key']
 
-
 @app.route('/')
 def movies_index():
     # Show all movies
-    return render_template('movies_index.html', movies=movies.find(), key=stripe_keys['publishable_key'])
+    return render_template('movies_index.html', movies=movies.find(), key=stripe_keys['publishable_key'])#key=publishable_key)
 
 
 @app.route('/movies', methods=['POST'])

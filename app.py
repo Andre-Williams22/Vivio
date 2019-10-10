@@ -39,13 +39,14 @@ stripe.api_key = stripe_keys['secret_key']
 
 @app.route('/')
 def movies_index():
-    # Show all movies
-    return render_template('movies_index.html', movies=movies.find(), key=stripe_keys['publishable_key'])
+    '''Show all movies'''
+    return render_template('movies_index.html', movies=movies.find(),
+     key=stripe_keys['publishable_key'])
 
 
 @app.route('/movies', methods=['POST'])
 def movies_submit():
-    # Submit a new movie
+    '''Submit a new movie'''
     movie = {
         'title': request.form.get('title'),
         'ratings': request.form.get('ratings'),
@@ -64,12 +65,13 @@ def movies_show(movie_id):
     """Show a single movie."""
     movie = movies.find_one({'_id': ObjectId(movie_id)})
     movie_comments = comments.find({'movie_id': ObjectId(movie_id)})
-    return render_template('movies_show.html', movie=movie, comments=movie_comments)
+    return render_template('movies_show.html', 
+    movie=movie, comments=movie_comments)
 
 
 @app.route('/movies/<movie_id>', methods=['POST'])
 def movies_update(movie_id):
-    # Submit an edited movie
+    '''Submit an edited movie'''
     updated_movie = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
@@ -83,20 +85,21 @@ def movies_update(movie_id):
 
 @app.route('/movies/new')
 def movies_new():
-    # Create a new movie
+    '''Create a new movie'''
     return render_template('movies_new.html', movie={}, title='New Movie')
 
 
 @app.route('/movies/<movie_id>/edit')
 def movies_edit(movie_id):
-    # Show the edit form for a movie
+    '''Show the edit form for a movie'''
     movie = movies.find_one({'_id': ObjectId(movie_id)})
-    return render_template('movies_edit.html', movie=movie, title='Edit Movie')
+    return render_template('movies_edit.html', movie=movie, 
+                            title='Edit Movie')
 
 
 @app.route('/movies/<movie_id>/delete', methods=['POST'])
 def movies_delete(movie_id):
-    # Delete one movie
+    '''Delete one movie'''
     movies.delete_one({'_id': ObjectId(movie_id)})
     return redirect(url_for('movies_index'))
 
@@ -123,6 +126,7 @@ def comments_delete(comment_id):
 
 @app.route('/charge/message')
 def show_message():
+    ''' Shows the charge amount'''
     amounts=1000
 
 
@@ -130,11 +134,11 @@ def show_message():
 
 @app.route('/charge', methods=['POST'])
 def charge():
-
+    '''charges the user'''
     client = Client(account_sid, auth_token)
     message = client.messages \
         .create(
-            body="Thank you for your purchase. Keep breathing! No reply needed.",
+            body="Thank you for your purchase. Keep breathing!",
             from_='+12162086503',
             to='2142846514')
     print(message.sid)

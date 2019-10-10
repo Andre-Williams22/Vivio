@@ -121,6 +121,13 @@ def comments_delete(comment_id):
     comments.delete_one({'_id': ObjectId(comment_id)})
     return redirect(url_for('movies_show', movie_id=comment.get('movie_id')))
 
+@app.route('/charge/message')
+def show_message():
+    amounts=1000
+
+
+    return render_template('charge.html', amount=amounts)
+
 @app.route('/charge', methods=['POST'])
 def charge():
 
@@ -147,7 +154,7 @@ def charge():
         description='Flask Charge'
     )
     
-    return render_template('charge.html', amount=amount)
+    return redirect(url_for('show_message'))
 
 
 if __name__ == '__main__':

@@ -6,6 +6,19 @@ import os
 import stripe
 from dotenv import load_dotenv
 load_dotenv()
+from twilio.rest import Client
+
+
+
+
+# Download the helper library from https://www.twilio.com/docs/python/install
+
+# Your Account Sid and Auth Token from twilio.com/console
+# DANGER! This is insecure. See http://twil.io/secure
+account_sid = os.environ["account_sid"]
+auth_token = os.environ['auth_token']
+
+client = Client(account_sid, auth_token)
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Movie')
 client = MongoClient(host=f'{host}?retryWrites=false')
@@ -30,7 +43,7 @@ stripe.api_key = stripe_keys['secret_key']
 @app.route('/')
 def movies_index():
     # Show all movies
-    return render_template('movies_index.html', movies=movies.find(), key=stripe_keys['publishable_key'])#key=publishable_key)
+    return render_template('movies_index.html', movies=movies.find(), key=stripe_keys['publishable_key'])
 
 
 @app.route('/movies', methods=['POST'])
@@ -113,6 +126,14 @@ def comments_delete(comment_id):
 
 @app.route('/charge', methods=['POST'])
 def charge():
+
+    client = Client(account_sid, auth_token)
+    message = client.messages \
+        .create(
+            body="Thank you for your purchase. Keep breathing!",
+            from_='+12162086503',
+            to=os.environ["MY_PHONE_NUM"])
+    print(message.sid)
 
     # amount in cents
     amount = 1000

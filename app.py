@@ -10,16 +10,6 @@ from twilio.rest import Client
 
 
 
-
-# Download the helper library from https://www.twilio.com/docs/python/install
-
-# Your Account Sid and Auth Token from twilio.com/console
-# DANGER! This is insecure. See http://twil.io/secure
-account_sid = os.environ["account_sid"]
-auth_token = os.environ['auth_token']
-
-client = Client(account_sid, auth_token)
-
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Movie')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
@@ -29,14 +19,21 @@ movies = db.movies
 comments = db.comments
 
 app = Flask(__name__)
+
+# Use if I were to go live
 '''
 secret_key = os.getenv("secret_key")
 publishable_key = os.getenv("publishable_key")
 '''
+account_sid = os.environ["account_sid"]
+auth_token = os.environ['auth_token']
+client = Client(account_sid, auth_token)
+
 stripe_keys = {
   'secret_key': 'sk_test_S1UKtrSKbTVMv7YzQpch6RBc007RPTTUgW',
   'publishable_key': 'pk_test_LqQaKSR0V30253rAvgA8Bcd300FMsyQ5d2'
 }
+
 
 stripe.api_key = stripe_keys['secret_key']
 
@@ -130,7 +127,7 @@ def charge():
     client = Client(account_sid, auth_token)
     message = client.messages \
         .create(
-            body="Thank you for your purchase. Keep breathing!",
+            body="Thank you for your purchase. Keep breathing! No reply needed.",
             from_='+12162086503',
             to=os.environ["MY_PHONE_NUM"])
     print(message.sid)

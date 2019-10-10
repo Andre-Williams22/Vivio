@@ -48,6 +48,11 @@ class MoviesTests(TestCase):
         result = self.client.get('/movies/new')
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'New Movie', result.data)
+    def test_charge(self):
+        """Test the charge page."""
+        result = self.client.get('/charge')
+        self.assertEqual(result.status, '200 OK')
+        self.assertIn(b'charge', result.data)
         
     @mock.patch('pymongo.collection.Collection.find_one')
     def test_show_movie(self, mock_find):

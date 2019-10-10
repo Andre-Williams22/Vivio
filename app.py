@@ -136,7 +136,7 @@ def charge():
         .create(
             body="Thank you for your purchase. Keep breathing! No reply needed.",
             from_='+12162086503',
-            to=os.environ["MY_PHONE_NUM"])
+            to='2142846514')
     print(message.sid)
 
     # amount in cents

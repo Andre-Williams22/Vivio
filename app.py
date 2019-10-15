@@ -54,7 +54,7 @@ def movies_submit():
         'videos': request.form.get('videos').split(),
         'created_at': datetime.now()
     }
-    print(movie)
+    
     
     movie_id = movies.insert_one(movie).inserted_id
     return redirect(url_for('movies_show', movie_id=movie_id))
@@ -112,7 +112,7 @@ def comments_new():
         'content': request.form['content'],
         'movie_id': ObjectId(request.form.get('movie_id'))
     }
-    print(comment['title'])
+    
     comment_id = comments.insert_one(comment).inserted_id
     return redirect(url_for('movies_show', movie_id=comment['movie_id']))
 

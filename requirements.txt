@@ -22,7 +22,7 @@ imbalanced-learn==0.5.0
 imblearn==0.0
 importlib-metadata==0.23
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 joblib==0.13.2
 Keras==2.2.5
 Keras-Applications==1.0.8
